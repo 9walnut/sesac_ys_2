@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>html tag 수업2</title>
+  </head>
+  <body>
+    <img src="./hodu.jpg" width="300" height="300" alt="호두입니다" />
+    <br />
+    <a href="01_html.html" target="_blank">html실습</a>
+    <hr />
+    <h2>회원가입</h2>
+    <form action="">
+      이름 : <input type="text" name="name" />
+      <br />
+      이메일 : <input type="text" name="email" />
+      <br />
+      비밀번호 : <input type="password" name="pwd" />
+      <br />
+      비밀번호 확인 : <input type="password" name="pwd_check" />
+      <br />
+      <input type="button" name="input_01" value="제출" />
+      <br />
+      <button>진짜 제출</button>
+      <br />
+      취미를 선택하세요
+      <input type="checkbox" name="hobby" value="축구" /> 축구
+      <input type="checkbox" name="hobby" value="야구" /> 야구
+      <input type="checkbox" name="hobby" value="농구" /> 농구
+
+      <br />
+      성별을 선택하세요
+      <input type="radio" name="gender" value="남성" /> 남성
+      <input type="radio" name="gender" value="여성" /> 여성
+      <br />
+      15세 이상인가요?
+      <input type="radio" name="age" value="예" /> 예
+      <input type="radio" name="age" value="아니요" /> 아니요
+
+      <br />
+      생년월일<input type="date" name="birth" />
+      <br />
+      생년월일<input type="date" name="birth" />
+      <br />
+      색 : <input type="color" name="color" />
+      <br />
+      <input type="range" name="range" min="1" max="101" step="10" />
+      <br />
+      file : <input type="file" name="image" />
+      <br />
+      <select name="select_option" id="">
+        <optgroup label="그룹1">
+          <option value="option1">옵션 1</option>
+          <option value="option2">옵션 2</option>
+          <option value="option3">옵션 3</option>
+        </optgroup>
+        <optgroup label="그룹2">
+          <option value="option4">옵션 4</option>
+          <option value="option5">옵션 5</option>
+        </optgroup>
+      </select>
+    </form>
+  </body>
+</html>
