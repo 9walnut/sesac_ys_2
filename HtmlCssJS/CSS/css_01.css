@@ -1,11 +1,11 @@
-* {
+/* * {
   color: aqua;
-}
+} */
 
-div {
+/* div {
   height: 10px;
   background-color: bisque;
-}
+} */
 
 /* class 선택자 */
 .deep {
@@ -21,6 +21,26 @@ div {
   background-color: red;
 }
 
+/* 하위 선택자 */
+div .apple {
+  color: deeppink;
+}
+
+/* 자식 선택자 */
+div > .apple {
+  color: blueviolet;
+}
+
+/* 인접 형제 선택자 */
+h1 + ul {
+  font-size: 25px;
+  color: blue;
+}
+/* 일반형제 선택자 */
+h1 ~ ul {
+  font-size: 25px;
+  color: blue;
+}
 /* .red {
   background-color: red;
   width: 20px;

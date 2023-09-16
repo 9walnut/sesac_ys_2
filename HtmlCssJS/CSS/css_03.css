@@ -1,0 +1,29 @@
+.zoo ul .lion {
+  background-color: greenyellow;
+}
+
+#tiger {
+  background-color: yellow;
+}
+
+.lion {
+  color: sienna;
+}
+
+/* 동물원 안의 사자 */
+.zoo ul .lion {
+  font-weight: bolder;
+}
+
+/* 호랑이 뒤에있는 팬더 */
+#tiger + li {
+  background-color: skyblue;
+}
+
+.zoo li.lion ~ li {
+  background-color: orange;
+}
+
+p ~ .lion {
+  background-color: red;
+}
