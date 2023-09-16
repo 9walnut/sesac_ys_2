@@ -1,0 +1,41 @@
+/* 모바일에서는 hover를 사용할 수 없음 */
+
+.div-hover:hover {
+  background-color: red;
+}
+
+.div-active:active {
+  background-color: blue;
+  color: white;
+}
+
+.input-focus:focus {
+  background-color: orange;
+}
+
+a:visited {
+  color: red;
+}
+
+/* 하위요소가 span이라면! 선택 되는 것, span이 아니라면 선택안됨 */
+.fruits span:first-child {
+  color: blue;
+}
+
+/* 중간 선택 */
+.fruits span:nth-child(2) {
+  color: green;
+}
+
+.fruits2 span:nth-child(2n + 1) {
+  color: purple;
+  background-color: aqua;
+}
+
+.fruits2 span:not(.wm) {
+  background-color: darkgrey;
+}
+
+.fruits *:not(span) {
+  background-color: darkred;
+}
