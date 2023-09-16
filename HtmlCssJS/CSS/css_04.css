@@ -39,3 +39,11 @@ a:visited {
 .fruits *:not(span) {
   background-color: darkred;
 }
+
+.wm-3 {
+  color: red;
+}
+
+.fruits3 > .wm-3 {
+  color: blue;
+}
