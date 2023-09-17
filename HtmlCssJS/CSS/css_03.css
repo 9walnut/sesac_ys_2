@@ -1,29 +1,36 @@
+/* CSS */
+
+/* 후손 선택자 */
 .zoo ul .lion {
   background-color: greenyellow;
 }
 
+/* 단일 선택자 */
 #tiger {
   background-color: yellow;
 }
 
+/* 단일 선택자 */
 .lion {
   color: sienna;
 }
 
-/* 동물원 안의 사자 */
+/* 후손 선택자*/
 .zoo ul .lion {
   font-weight: bolder;
 }
 
-/* 호랑이 뒤에있는 팬더 */
+/* 인접 형제 선택자 */
 #tiger + li {
   background-color: skyblue;
 }
 
+/* 일반 형제 선택자 */
 .zoo li.lion ~ li {
   background-color: orange;
 }
 
+/* 일반 형제 선택자 */
 p ~ .lion {
   background-color: red;
 }
