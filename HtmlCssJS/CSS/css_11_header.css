@@ -21,6 +21,11 @@ ul {
   list-style: none;
 }
 
+li {
+  float: left;
+  margin: 15px;
+}
+
 h1 {
   text-align: center;
 }
@@ -41,20 +46,17 @@ header {
 .header1 {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
-.header1 li {
+.header1 .menus {
+  float: left;
 }
 
 /* header2 */
-.header2 {
+.header2 .menus {
   display: flex;
-  justify-content: space-evenly;
-}
-
-.header2 ul {
-  display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .header2 li {
@@ -65,9 +67,18 @@ header {
 /* header3 */
 .header3 {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* header4 */
 .header4 {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header4 .menu-left {
+  display: flex;
+  align-items: center;
 }
