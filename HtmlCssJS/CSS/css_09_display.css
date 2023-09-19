@@ -1,0 +1,81 @@
+/* div {
+  display: block;
+} */
+
+.box {
+  background-color: black;
+  color: white;
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  text-align: center;
+  line-height: 100px;
+}
+
+/* 인라인 요소에는 width, height값을 지정해도 안보임 기입한 값만큼의 길이만 보임  */
+/* margin 중 top, bottom은 무용지물 */
+
+/* 인라인 요소에 무용지물된 요소를 적용하기위해 사용 */
+.d-inline-block {
+  /* inlin-block은 inline과 block의 특징을 합쳐놓은 것(inline: 콘텐츠의 크기만큼만 차지 / block : width,height, margin 정상작동) */
+  display: inline-block;
+  padding: 20px;
+}
+
+/* flex : 자식요소를 인라인요소(inline-block)로 만들어줌 */
+.container {
+  display: flex;
+  background-color: blue;
+  height: 400px;
+  /* 기본값이 row임 */
+  /* flex-direction은 주축을 변경해줌 */
+  flex-direction: column-reverse;
+}
+
+/* flex-wrap, justify-content */
+.container-2 {
+  /* flex-direction: column; */
+  display: flex;
+  background-color: blue;
+  width: 400px;
+  height: 400px;
+  flex-wrap: wrap;
+  /* 기본값은 flex-start */
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.container-pr1 {
+  display: flex;
+  background-color: brown;
+  color: white;
+  width: 500px;
+  height: 500px;
+  flex-direction: row;
+}
+
+.container-pr2 {
+  display: flex;
+  background-color: brown;
+  color: white;
+  width: 500px;
+  height: 500px;
+  flex-direction: row-reverse;
+}
+
+.container-pr3 {
+  display: flex;
+  background-color: brown;
+  color: white;
+  width: 500px;
+  height: 500px;
+  flex-direction: column;
+}
+
+.box1 {
+  background-color: black;
+  color: white;
+  width: 100px;
+  height: 100px;
+  margin: 3px;
+}
