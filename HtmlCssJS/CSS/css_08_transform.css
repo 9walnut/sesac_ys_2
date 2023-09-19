@@ -1,0 +1,67 @@
+.hodu:active {
+  transform: skew(50deg, 30deg);
+  height: 300px;
+  width: 300px;
+}
+
+.hodu-R:active {
+  transform: rotateX(40deg);
+}
+
+.hodu-scale:active {
+  transform: scale(1.5);
+}
+
+.hodu-translate:active {
+  transform: translate(10px, 10px);
+}
+
+.hodu-transform:active {
+  position: relative;
+  top: 100px;
+  transform: perspective(150px) rotateY(40deg);
+  /* 지속시간 + 전환효과 타이밍 + 지연시간*/
+  transition: transform 5s linear 2s;
+}
+
+.hodu-width:active {
+  width: 500px;
+  transform: perspective(150px) rotateY(40deg);
+  transition: 5s;
+}
+
+.item1 {
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  color: white;
+}
+
+.item1-trans:active {
+  width: 300px;
+  height: 300px;
+  transition: 1s linear 0.5s;
+}
+
+.cof {
+  height: 300px;
+  width: 300px;
+  transform: skew(30deg) rotate(20deg);
+}
+
+.cof1 {
+  position: absolute;
+  z-index: 3;
+}
+
+.cof2 {
+  position: absolute;
+  left: 125px;
+  z-index: 2;
+}
+
+.cof3 {
+  position: absolute;
+  left: 200px;
+  z-index: 1;
+}
