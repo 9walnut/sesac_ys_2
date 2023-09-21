@@ -1,0 +1,72 @@
+.box {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  /* name time delay 횟수*/
+  animation: movetoright 2s infinite;
+  animation-direction: alternate;
+}
+
+.circle {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: pink;
+  animation: move 3s 6;
+}
+
+/* 애니메이션 정의 */
+@keyframes move {
+  /* from {
+    left: 0px;
+  }
+
+  to {
+    left: 100px;
+  } */
+
+  0% {
+    left: 0px;
+    top: 0px;
+  }
+
+  25% {
+    left: 100px;
+    top: 0px;
+  }
+
+  50% {
+    left: 100px;
+    top: 100px;
+  }
+
+  75% {
+    left: 0px;
+    top: 100px;
+  }
+
+  100% {
+    left: 0px;
+    top: 0px;
+  }
+}
+
+.text {
+  position: relative;
+  animation: move1;
+  animation-duration: 3s;
+}
+
+@keyframes move1 {
+  0% {
+    margin-left: 100%;
+    width: 200%;
+  }
+
+  100% {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
