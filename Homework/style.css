@@ -22,17 +22,19 @@ section .sky {
 }
 
 section .sky .sun {
-  width: 180px;
+  width: 100px;
   position: absolute;
-  left: 10px;
-  top: 10px;
+  left: 80px;
+  top: 30px;
+  animation: sun_rotate 6s linear infinite;
 }
 
 section .sky .moon {
-  width: 160px;
+  width: 100px;
   position: absolute;
-  left: 10px;
-  top: 10px;
+  left: 80px;
+  top: 30px;
+  animation: moon_rotate 6s linear infinite;
 }
 
 section .sky .cloud_1 {
@@ -40,8 +42,7 @@ section .sky .cloud_1 {
   left: 200px;
   top: 130px;
   width: 100px;
-  animation: big_cloud 3s infinite alternate;
-  animation-duration: 7s;
+  animation: big_cloud 9s infinite alternate;
 }
 
 section .sky .cloud_2 {
@@ -49,6 +50,7 @@ section .sky .cloud_2 {
   width: 60px;
   left: 550px;
   top: 200px;
+  animation: small_cloud 7s infinite alternate;
 }
 
 section .city .city_img {
@@ -90,12 +92,35 @@ section .city .city_img {
   }
 }
 
+@keyframes sun_rotate {
+  from {
+    opacity: 1;
+    transform: rotate(180deg);
+  }
+  to {
+    opacity: 0;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moon_rotate {
+  from {
+    opacity: 0;
+    transform: rotate(360deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(180deg);
+  }
+}
+
 @keyframes big_cloud {
   0% {
     left: 200px;
     top: 130px;
     opacity: 0;
   }
+
   50% {
     left: 550px;
     top: 130px;
@@ -104,6 +129,24 @@ section .city .city_img {
   100% {
     left: 200px;
     top: 130px;
+    opacity: 0;
+  }
+}
+
+@keyframes small_cloud {
+  0% {
+    left: 550px;
+    top: 200px;
+    opacity: 0;
+  }
+  50% {
+    left: 200px;
+    top: 200px;
+    opacity: 1;
+  }
+  100% {
+    left: 550px;
+    top: 200px;
     opacity: 0;
   }
 }
