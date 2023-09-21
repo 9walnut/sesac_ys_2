@@ -72,13 +72,122 @@
       console.log(guho);
 
       // promt는 숫자를 기입해도 문자로 인식됨
-      let mathScore = Number(prompt("수학점수"));
-      let engScore = Number(prompt("영어 점수"));
-      let avgScore = (mathScore + engScore) / 2;
+      // let mathScore = Number(prompt("수학점수"));
+      // let engScore = Number(prompt("영어 점수"));
+      // let avgScore = (mathScore + engScore) / 2;
       // 문자열이기 때문에 숫자로 합산 안됨
       // Number를 통해 형변환
-      console.log(avgScore);
+      // console.log(avgScore);
+
+      // 대입연산자
+      let num1 = 5;
+      let num2 = num1;
+
+      // 비교연산자
+      // ===은 자료형까지 비교함
+      // true 출력
+      console.log("80" == 80);
+      // false 출력
+      console.log("80" === 80);
+
+      // !=, !==
+      console.log("80" != 80);
+      // 자료형을 비교하기 때문에 true로 출력
+      console.log("80" !== 80);
+
+      // 산술 연산자
+      console.log(80 + 70);
+      console.log(80 * 70);
+      console.log(80 % 70);
+      console.log(2 ** 3);
+      // 논리 연산자
+
+      console.log(num1 > 4 && num1 < 8); //and
+      console.log(num1 > 4 || num1 > 8); //or
+      console.log(num1 < 4 != num1 < 8); //not
+
+      let bool = true;
+      console.log(!bool);
+      console.log(!(num1 > 2));
+
+      let num4 = 5;
+      num4 = num4 + 1;
+      num4 += 3;
+
+      console.log(num4);
+
+      // 증감 연산자
+      let num5 = 5;
+      console.log(++num5);
+      console.log(num5++);
+      console.log(num5);
+
+      // 함수 함수이름(매개변수(인자) 받을 것)
+      // 명시적 함수 선언, 매개변수 x, 반환값 x
+      funEx1();
+      // 함수를 선언하기 전에 함수 호출 가능
+      function funEx1() {
+        console.log("hello");
+      } //호이스팅
+
+      // 함수 표현식, 매개변수 o, 반환값 x
+      const funEx2 = function (num4) {
+        console.log(`hello` + num4);
+      };
+      // 함수 표현식에
+      let funEx3 = () => {
+        return `Hello`;
+      };
+
+      // funEx1();
+      // funEx2();
+      // funEx3();
+
+      // 매개변수 여부, 반환값(return) 여부에 따라 4가지로 분류
+      // 매개변수: 함수 외부에서 함수 내부로 값을 전달하고 싶을 때 사용하는 변수
+      // 반환 값 : 함수 내부에서 외부로 값을 전달하고 싶을 때 사용
+      const num = 5;
+      // 매개변수 x, 반환값 x
+      function funEx4() {
+        console.log("Hello");
+      }
+      // 매개변수 o, 반환값 x
+      function funEx5(num) {
+        console.log(num);
+      }
+      // 매개변수 x, 반환값 o
+      function funEx6() {
+        return "Hello";
+      }
+
+      let result = funEx6();
+      // 매개변수 o, 반환값 o
+      function funEx7(num1, num2) {
+        return num1 + num2;
+      }
+
+      let sum = funEx7(2, 3);
+      console.log(sum);
+      let result2 = funEx7();
+
+      funEx4();
+      funEx5();
+      funEx6();
+      funEx7();
+
+      function multifly(test1, test2) {
+        return test1 * test2;
+      }
+      console.log(multifly(3, 7));
+      console.log(multifly(2, 2));
+
+      function square(num) {
+        console.log(num ** 2);
+      }
+
+      square(4);
+      square(11);
+      square(5);
     </script>
   </body>
 </html>
-S
