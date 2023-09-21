@@ -41,7 +41,7 @@
   height: 400px;
   flex-wrap: wrap;
   /* 기본값은 flex-start */
-  justify-content: space-evenly;
+  justify-content: ;
   align-items: center;
 }
 
