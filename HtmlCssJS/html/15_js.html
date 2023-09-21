@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>조건문</title>
+  </head>
+  <body>
+    <script>
+      let name = "hodu";
+      if (name === "odu") {
+        console.log("호두야 안녕");
+      } else if (name === "momo") {
+        console.log("모모야 안녕");
+      } else {
+        console.log("구호야 호두 어딨어?");
+      }
+
+      let number = 5;
+      if (number > 4) {
+        console.log("d");
+        if (number > 7) {
+          console.log("a");
+        } else {
+          console.log("b");
+        }
+      } else {
+        console.log("c");
+      }
+
+      // let age = Number(prompt("나이"));
+      let age = 500;
+      if (age >= 20) {
+        console.log("성인");
+      } else if (age >= 17) {
+        console.log("고등학생");
+      } else if (age >= 14) {
+        console.log("중학생");
+      } else if (age >= 8) {
+        console.log("초등학생");
+      } else {
+        console.log("유아");
+        15;
+      }
+
+      // Switch문
+      number = "a";
+      switch (number) {
+        case 1:
+          console.log("1");
+          break;
+        case 2:
+          console.log("2");
+          break;
+        case "a":
+          console.log("3");
+          break;
+        default:
+          console.log("해당 없음");
+          break;
+      }
+
+      // 삼항 연산자
+      // 조건 ? 참 일때 실행 코드 : 거짓 일때 실행 코드
+      let name1 = "ABC";
+      name1 == "ABC" ? console.log("안녕하세요") : console.log("누구세요?");
+
+      let msg = name1 == "ABC" ? "안녕하세요?" : "누구세요";
+      console.log(msg);
+
+      let now = new Date().getHours();
+      console.log(now);
+      now >= 12 ? console.log("오후") : console.log("오전");
+    </script>
+  </body>
+</html>
