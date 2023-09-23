@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="box" class="box">hello</div>
+    <div id="container" class="box item">hello</div>
+    <span>hello span</span>
+
+    <input type="text" name="email" />
+
+    <div id="box2">Hello box2</div>
+    <script>
+      console.log(document.documentElement);
+      console.log(document.head);
+      console.log(document.title);
+      console.log(document.body); //제일 빈번하게 사용됨
+      console.log(document.URL);
+      console.log(document.domain);
+
+      // Document - 요소 선택
+      let elByID = document.getElementById("box");
+      console.log(elByID);
+
+      let elByClass = document.getElementsByClassName("box");
+      console.log(elByClass);
+      console.log(elByClass[0]);
+      console.log(elByClass[1]);
+
+      let elByTag = document.getElementsByTagName("span");
+      console.log(elByTag);
+      console.log(elByTag[0]);
+
+      let elByName = document.getElementsByName("email");
+      console.log(elByName);
+
+      // 선택자를 이용하여 요소를 선택
+      let elBySelector = document.querySelector(".box"); //가장 빈번하게 사용됨
+      let elBySelectorAll = document.querySelectorAll(".box");
+      console.log(elBySelector);
+      console.log(elBySelectorAll);
+
+      let elBox2 = document.getElementById("box2");
+      // let elBox2 = document.querySelector("box2");
+      console.log(elBox2.innerText);
+      console.log(elBox2.innerHTML);
+
+      elBox2.innerText = "hello Guho";
+      elBox2.innerHTML = "hello <b>Guho</b>";
+      console.log(elBox2.innerText);
+    </script>
+  </body>
+</html>

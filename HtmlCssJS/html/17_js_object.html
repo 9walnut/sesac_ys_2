@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dom</title>
+  </head>
+  <body>
+    <script>
+      // 복사해서 새로운 공간을 만들었음
+      // num, num2는 서로 다른 공간으로 되어있음
+      // 숫자, 문자열 등
+      let num = 5;
+      let num2 = num;
+      num2 += 5;
+      console.log(num, num2);
+
+      // arr의 주소값을 참조해서 작성되었기 때문에 같은 공간을 바라보고있음
+      // 배열, 딕셔너리 등등이 해당됨
+      let arr = [1, 2, 3, 4, 5];
+      let arr2 = arr;
+      arr2.reverse();
+      console.log(arr, arr2);
+
+      // 아래 코드는 slice를 통해 다른 공간을 바라보게 만들었음
+      var arr3 = [1, 2, 3, 4];
+      var arr4 = arr3.slice();
+      arr4.reverse();
+      console.log(arr3, arr4);
+
+      let date = new Date(); //날짜 객체 반환
+      console.log(date);
+      console.log(date.getFullYear());
+      console.log(date.getDate());
+      console.log(date.getDay());
+      console.log(date.getMonth() + 1);
+      console.log(date.getHours());
+      console.log(date.getTime()); //
+
+      let expired = new Date("2023-09-22").getTime();
+      let today = new Date().getTime(); //오늘 날짜
+
+      if (expired < today) {
+        console.log("만료일 경과");
+      } else {
+        console.log("만료일 미경과");
+      }
+    </script>
+  </body>
+</html>

@@ -116,6 +116,7 @@
       // [].forEach 은 문법이 아니라 메서드임
       // 배열의 원소를 순차적으로 탐색함
 
+      // ==========================배열에서의 기타 메소드============================================
       let fruits2 = ["apple", "banana", "grape"];
       // 매개변수가 필요함(함수)
       // 첫 매개변수 : 탐색된 원소
@@ -150,6 +151,72 @@
         result3 += num;
       });
       console.log(result3);
+
+      const arr = [1, 2, 3, 4, 5];
+      let arr_filter = arr.filter(function (a) {
+        // a>3이라는조건에 해당되는 배열만 arr_filter에 담겠다는 의미
+        return a > 3;
+      });
+      console.log(arr_filter);
+
+      let val_find = arr.find(function (a) {
+        return a > 3;
+      });
+
+      console.log(val_find);
+
+      // 조건에 부합한 결과에 새로운 배열로 반환
+      let arr_map = arr.map(function (b) {
+        return b + 3;
+      });
+      console.log(arr_map);
+
+      // .pop() : 배열의 끝 요소 제거
+      a.pop();
+      console.log(a);
+
+      // .shift(), unshift() :
+      a.shift(3);
+      console.log("shift", a);
+
+      a.unshift(5);
+      console.log("unshift", a);
+
+      console.log("includes ", a.includes(1)); // 앞에서 빼서 false
+      console.log("indexOf 10 ", a.indexOf(10));
+      console.log("indexOf 1 ", a.indexOf(1));
+
+      let b = a.reverse();
+      console.log("reverse", b);
+
+      console.log("join", a.join(","));
+
+      let k = "Happy Day~! ";
+      console.log("length", k.length);
+      console.log("uppercase", k.toUpperCase());
+      console.log("lowercase", k.toLowerCase());
+      console.log("indexof", k.indexOf("p"));
+      console.log("slice", k.slice(3, 8));
+      console.log("replace", k.replace("p", "a"));
+      console.log("replaceAll", k.replaceAll("p", "a"));
+      console.log("repeat", k.repeat(3)); //별찍기 개꿀인데???
+      console.log("trim", k.trim()); //문자열 양끝 공백 제거
+      console.log("split", k.split(""));
+      console.log("split", k.split(" "));
+
+      // 메서드 체이닝
+      // 반환값을 가지고 있는 메서드를 사용할 경우 사용 가능 ex) split
+      console.log(k);
+      console.log("hello".split(""));
+      console.log("hello".split("").reverse());
+      console.log("hello".split("").reverse().join(""));
+      console.log("Heeeeeeellllo".split(""));
+
+      let star_num = Number(prompt("별 몇개 찍을깤ㅋㅋ"));
+      let star = "*";
+      for (let i = 1; i <= star_num; i++) {
+        console.log(star.repeat(i));
+      }
     </script>
   </body>
 </html>
