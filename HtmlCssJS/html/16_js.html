@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS 반복문</title>
+  </head>
+  <body>
+    <script>
+      // 배열 : 비슷한 특징을 가진 값을 모아둠
+
+      // 초기값; 조건문; 증감문
+      // for (let i = 0; i < 10; i++) {
+      //   // 명령문(반복하고 싶은 코드)
+      //   // console.log(i, "안녕?");
+      // }
+      // console.log("끝");
+
+      // for (let index = 0; index < 10; index++) {
+      //   // console.log("인사" + (index + 1) + "번째 드립니다");
+      // }
+
+      // 중첩 for문
+      // for (let i = 0; i < 5; i++) {
+      //   for (let j = 0; j < 5; j++) {
+      //     console.log(`i: ${i}, j: ${j}`);
+      //   }
+      // }
+
+      // 초기값; 조건식; 증감문
+      // for (let i = 0; i < 10; i = i + 2) {
+      //   // console.log(i);
+      // }
+      // for (let i = 10; i > 0; i--) {
+      //   // console.log(i);
+      // }
+      // for (let i = 10; i > 0; i = i - 3) {
+      //   // console.log(i);
+      // }
+      // for문 while문 차이
+      // for문 : 반복할 횟수 특정할 수 있을 때
+      // while문 : 반복할 횟수를 특정할 수 없을 때
+
+      // 조건이 true일 경우 실행
+      // let i = 0;
+      // while (i < 10) {
+      //   console.log(i);
+      //   i++;
+      //   let j = 0;
+      //   while (j < 10) {
+      //     console.log(j);
+      //     j++;
+      //   }
+      // }
+
+      // while (true) {
+      //   let number = Number(prompt("양수를 입력하세요"));
+      //   if (number > 0) break;
+      //   console.log("hello");
+      // }
+      // console.log("끝");
+
+      // continue
+      // for (let i = 0; i < 10; i++) {
+      //   if (i % 2 == 0) continue;
+      //   console.log(i);
+      // }
+
+      // num
+      // // 처음한번은 조건에 상관없이 실행
+      // do {
+      //   let number = Number(prompt("양수를 입력하세요"));
+      // } while (number < 0);
+      // result = 0;
+      // for (let i = 0; i < 101; i++) {
+      //   if (i % 2 == 0 || i % 5 == 0) {
+      //     result += i;
+      //   }
+      // }
+      // console.log(result);
+
+      // let number = Number(prompt("13배수면서 홀수니?"));
+      // for (let i = 0; i < 10001; i++) {
+      //   if (number % 13 == 0 && number % 2 == 1) {
+      //     console.log(number);
+      //   }
+      // }
+      // for (let i = 2; i < 10; i++) {
+      //   console.log(`---${i} 단---`);
+      //   for (let j = 1; j < 10; j++) {
+      //     console.log(`${i} x ${j} = ${i * j}`);
+      //   }
+      // }
+
+      // let num = Number(prompt("별찍기1"));
+      // for (let i = 0; i < num; i++) {
+      //   let star = "";
+      //   for (let j = 0; j <= i; j++) {
+      //     star += "*";
+      //   }
+      //   console.log(star);
+      // }
+      let fruits = ["apple", "banana", "grape"];
+      for (let i = 0; i < fruits.length; i++) {
+        console.log(fruits[i]);
+      }
+      // for of 문
+      // of 뒤에 있는 fruits는 미리 선언한 배열이어야함
+      // let 뒤의 fruit은 새로 선언한 변수임
+      for (let fruit of fruits) {
+        console.log(fruit);
+      }
+
+      // [].forEach 은 문법이 아니라 메서드임
+      // 함수 : 재사용할 가능성이 있는 특정 기능을 묶어두는 것
+      // 메서드 : 함수에 속하는 개념으로 객체 내에서 선언되어있는 함수
+    </script>
+  </body>
+</html>
