@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document 객체</title>
+    <style>
+      .container {
+        width: 600px;
+        height: 400px;
+        background-color: beige;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+      }
+      .red {
+        background-color: red;
+      }
+      .orange {
+        background-color: orange;
+      }
+      .yellow {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box red"></div>
+      <div class="box orange"></div>
+      <div class="box yellow"></div>
+    </div>
+    <!-- input 태그를 선택해서 placeholer 속성 추가 -->
+    <input type="text" name="name" />
+
+    <div>
+      <button type="button" onclick="twincle()">반짝여라</button>
+      <button type="button" onclick="addPlaceholder()">placeholder 추가</button>
+      <button type="button" onclick="addBox()">box 추가</button>
+      <button type="button" onclick="removeBox()">box 삭제</button>
+    </div>
+    <br />
+
+    <h1>실습 계산기 만들기</h1>
+    <div>
+      값1 :
+      <input type="text" id="value1" />
+    </div>
+    <div>
+      값2 :
+      <input type="text" id="value2" />
+    </div>
+    <div>
+      연산자 :
+      <input type="text" id="caculate" />
+    </div>
+    <div>
+      결과 :
+      <input type="text" id="result" />
+    </div>
+    <div>
+      <button type="button" onclick="valueInput()">계산하기</button>
+      <button type="button" id="result" onclick="reset()">초기화</button>
+      <!-- type reset은 기본적으로 제공되긴함 -->
+    </div>
+
+    <script>
+      const boxes = document.querySelectorAll(".box"); //인덱싱을 해줘야됨
+      const box1 = boxes[0];
+      boxes[0].innerHTML = "Hello";
+
+      console.log(box1.classList);
+
+      // box1.classList.add();
+
+      // 박스 클릭할 때 반짝이게 하기
+      function twincle() {
+        box1.classList.toggle("red");
+        // if (box1.classList.contains("red")) box1.classList.remove("red");
+        // else box1.classList.add("red");
+      }
+
+      const input = document.querySelector("input");
+      function addPlaceholder() {
+        input.setAttribute("placeholder", "이름을 입력하세요");
+        input.setAttribute("id", "input_id");
+      }
+
+      // 특정 요소의 자식 요소들에 접근
+      const container = document.querySelector(".container");
+      console.log(container.children[1]); //childeren 기본적으로 배열을 반환
+
+      //  특정 요소의 부모 요소에 접근
+      console.log(box1.parentNode); // parentNode 기본적으로 하나의 요소를 반환
+
+      // 특정 요소의 형제 요소에 접근
+      console.log(box1.nextElementSibling);
+      console.log(boxes[1].nextElementSibling); // 다음 형제요소 하나
+      console.log(boxes[1].previousElementSibling); //이전 형제 요소 하나
+
+      function addBox() {
+        // container를 선택해서 마지막에 추가..?
+        const container2 = document.querySelector(".container");
+        // 추가할 요소를 생성
+        const newBox = document.createElement("div"); //span, div와 같은 태그들이 와야함
+        // newBox.classList.add("box");
+        // newBox.classList.add("red");
+        // 위 코드와 같은 내용임
+        newBox.className = "box red";
+        // container의 마지막 자식으로 요소 추가(append, appendchild)
+        // node 객체만 넘길 수 있음
+        // container2.appendChild(newBox);
+        //문자열을 인자로 넘길 수 있음
+        container2.append("newBox");
+
+        // container의 첫번째 자식으로 추가 (prepend)
+        // container2.prepend(newBox);
+
+        // container의 형제로 추가(before, after)
+        // container2.before(newBox);
+        container2.after(newBox);
+      }
+
+      function removeBox() {
+        // 1. 삭제하고 싶은 요소 선택하여 삭제
+        const orangeBox = document.querySelector(".box.orange");
+        orangeBox.remove();
+        // 2. 삭제하고 싶은 요소의 부모 요소 삭제(굳이 안씀)
+        // const container3 = document.querySelector(".container");
+        // removeChild는 반환값이 있음(잔상이 있다?)
+        // container3.removeChild(container3.children[1]);
+      }
+
+      const value2 = document.getElementById("value2").value;
+
+      function valueInput() {
+        const value1 = document.getElementById("value1").value;
+        const value2 = document.getElementById("value2").value;
+        const caculate = document.getElementById("caculate").value;
+        let result;
+        if (caculate == "+") {
+          result = value1 + value2;
+        } else if (caculate == "-") {
+          result = value1 - value2;
+        } else if (caculate == "*") {
+          result = value1 * value2;
+        } else if (caculate == "/") {
+          result = value1 / value2;
+        }
+        document.getElementById("result").value = result;
+      }
+
+      function reset() {
+        document.getElementById("value1").value = "";
+        document.getElementById("value2").value = "";
+        document.getElementById("caculate").value = "";
+        document.getElementById("result").value = "";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .container {
+        width: 600px;
+        height: 400px;
+        background-color: beige;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      button {
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="" alt="" id="fruits" />
+      <button type="button" id="apple" onclick="apple()">사과</button>
+      <button type="button" id="banana" onclick="banana()">바나나</button>
+      <button type="button" id="grape" onclick="grape()">포도</button>
+      <button type="button" id="peach" onclick="peach()">복숭아</button>
+    </div>
+
+    <!-- <button id="box" type="button" onclick="color()"></button> -->
+    <div id="box" type="button" onclick="color()">asdf</div>
+    <script>
+      function apple() {
+        $("#fruits").attr("src", "/HtmlCssJS/image/dolche.jpg");
+      }
+      function banana() {
+        $("#fruits").attr("src", "/HtmlCssJS/image/marvel.jpg");
+      }
+      function grape() {
+        $("#fruits").attr("src", "/HtmlCssJS/image/dolche.jpg");
+      }
+      function peach() {
+        $("#fruits").attr("src", "/HtmlCssJS/image/marvel.jpg");
+      }
+
+      $("#box").ready(function () {
+        var i = 0;
+        var arry = new Array(
+          "red",
+          "orange",
+          "yellow",
+          "green",
+          "blue",
+          "navy",
+          "purple"
+        );
+        $("#box").click(function () {
+          var result = arry[i];
+          $("#box").css("background", result);
+          i++;
+          if (i == 7) {
+            i = 0;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

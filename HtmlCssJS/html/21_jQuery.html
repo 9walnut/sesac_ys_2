@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+    .container {
+      width: 600px;
+      height: 400px;
+      background-color: beige;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+    }
+    .red {
+      background-color: red;
+    }
+    .orange {
+      background-color: orange;
+    }
+    .yellow {
+      background-color: yellow;
+    }
+    </style>
+  </head>
+  <body>
+    <body>
+      <div class="container">
+        <div class="box red"></div>
+        <div class="box orange"></div>
+        <div class="box yellow"></div>
+      </div>
+
+      <input type="text" name="name" id="input" value="Guho">
+      <button type="button" onclick="useVal()">val() 사용하기</button>
+      <button type="button" onclick="useAttr()">Attr() 사용하기</button>
+
+      <span id="span1">Hello</span>
+      <button type="button" onclick="useCss()">Css() 사용하기</button>
+      <button type="button" onclick="useText()">Text() 사용하기</button>
+      <br>
+      <div class="container">
+        <div class="box red"   id="red"></div>
+        <div class="box orange"></div>
+        <div class="box yellow"></div>
+      </div>
+      <button type="button" onclick="useAppend()">append() 하숑하기</button>
+      <button type="button" onclick="useRemove()">remove() 하숑하기</button>
+      <button type="button" onclick="useParent()">요소 탐색하기</button>
+      <button type="button" onclick="controlClass()">controlClass</button>
+
+    <script>
+      // $("선택자").동작함수;
+      // document.get~~~ /document.querySelector~~~~~
+      // 요소.innerHTML / .append()
+
+      // id가 input인 태그를 선택하여 그 input의 value를 가져오는 코드
+      const value = $("#input").val();
+      // document.getElementById("input").value
+      console.log(value)
+
+      // id가 input인 태그를 선택하여 그 input의 value를 설정하는 코드
+      $("#input").val("설정값!");
+      // 아래 코드와 같은 말임
+      // document.getElementById("input").value = '설정하고 싶은 값'
+
+      function useVal(){
+        const value = $("#input").val();
+        console.log(value)
+      }
+
+      function useCss(){
+        $("#span1").css("font-size", "30px");
+        $("#span1").css("color", "blue");
+
+        // js코드로 한다면?
+        // const span = document.getElementById("span1");
+        // span.style = "font-size: 30px; color: blue;"
+      }
+
+      function useAttr(){
+        $("#input").val("");
+        $("#input").attr("placeholder", "이름을 입력하세요")
+        // js로 한다면 ? setAttributes()
+      }
+
+      function useText(){
+        // innerText과 같음(태그미인식)
+        // $("#span1").text("Hellllllo")
+
+        // innerHTML(태그인식)
+        $("#span1").html("Hello <b>Guho</b>")
+      }
+
+      // 제이쿼리는 aapend만 있고 appendchild는 없음
+      function useAppend(){
+        // js에서의 append를 백틱의 문자열을 그대로 인식해서 div태그가 문자열로 출력됨
+        $(".container").append(`<div class ="box red"></div>`)
+        // .container의 첫번째 자식으로 추가
+        $(".container").prepend(`<div class ="box red"></div>`)
+        // .container의 앞 형제로 추가
+        $(".container").before(`<div class ="box red"></div>`)
+        // .container의 뒤 형제로 추가
+        $(".container").after(`<div class ="box red"></div>`)
+      }
+
+      function useRemove(){
+        $(".box.orange").remove();
+        // const container = document.queryselector("container")
+        // container.innerHTML = "";
+        // .container의 내용을 비우겠다
+        $(".container").empty();
+      }
+
+      function useParent(){
+        // parent()
+        console.log("parent", $(".box.red").parent())
+        // parents() : 조상들까지 전부다 body같은 것들까지..
+        console.log("parents", $(".box.red").parents())
+        // next()
+        console.log("next", $(".box.red").next())
+        // prev()
+        console.log("prev", $(".box.orange").prev())
+        // children
+        console.log("children", $("container").children())
+      }
+
+      function controlClass(){
+        const redBox = $("#red")
+        // if(redBox.hasClass("red")) redBox.removeClass("red")
+        // else redBox.addClass("red")
+        // $(".box.orange").addClass("red")
+        // 빈출 - todolist에서 많이 사용됨
+        redBox.toggleClass("red");
+      }
+
+      // src 주소바꾸기
+      // 클래스바꾸기
+    </script>
+  </body>
+</html>
