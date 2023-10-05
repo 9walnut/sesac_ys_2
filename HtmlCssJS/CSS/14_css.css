@@ -1,0 +1,73 @@
+p {
+  background-color: green;
+}
+
+.container {
+  width: 500px;
+  height: 500px;
+  /* background-color: beige; */
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  margin: 30px;
+  background-color: black;
+  border-radius: 10px;
+  border: red 2px solid;
+}
+
+.red {
+  background-color: red;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+/* @media print {
+  .container {
+    background-color: blue;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  body {
+    background-color: skyblue;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  body {
+    background-color: orange;
+  }
+}
+
+@media screen and (min-width: 300px) and (max-width: 500px) {
+  body {
+    background-color: white;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .yellow {
+    background-color: darkgoldenrod;
+  }
+} */
+@media screen and (max-width: 700px) {
+  .container {
+    display: block;
+    flex-direction: column;
+  }
+  .box {
+    background-color: skyblue;
+  }
+}
+
+/* can i use .com */
