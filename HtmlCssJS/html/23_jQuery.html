@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이벤트 리스너</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // 로딩이벤트를 통해 html로드 직후 실행하게 할 수 있음
+      // jquery3.0이상부터는 비권장
+      $(document).ready(function () {
+        console.log($(".container"));
+      });
+      // jquery3.0이상부터 권장되는 방식
+      $(function () {
+        console.log($(".container"));
+      });
+    </script>
+
+    <style>
+      .container {
+        background-color: cadetblue;
+        width: 200px;
+        height: 200px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 로딩이벤트 : html이 로드된 직후 실행할 코드 -->
+    <div class="container"></div>
+    <div class="container"></div>
+    <input type="password" name="pw" />
+    <script>
+      // 동적바인딩, 정적 바인딩
+      // 화살표 함수 : 정적 바인딩 -> 부묘요소의 this를 저장함(여기선 window)
+      // 일반함수(funcion) : 동적 바인딩 -> 호출할 때를 고려하여 this를 결정(이벤트를 발생시킨 요소)
+      // $(".container").click(function () {
+      //   // event가 걸린 요소를 this에 담음
+      //   console.log(this);
+      //   $(this).css("background-color", "red");
+      //   // $(".container").css("background-color", "red");
+      // });
+
+      // 마우스가 올라갔을 떄
+      $(".container").mouseover(function () {
+        $(this).css("background-color", "green");
+      });
+      // 마우스가 나갔을 때
+      $(".container").mouseout(function () {
+        $(this).css("background-color", "red");
+      });
+      // 마우스 over/out을 한번에 지정
+      $(".container").hover(
+        function () {
+          // 마우스가 들어갔을 떄
+          $(this).css("background-color", "green");
+        },
+        function () {
+          // 마우스가 나갔을 떄
+          $(this).css("background-color", "red");
+        }
+      );
+
+      // document에 스크롤
+      $(document).scroll(function () {
+        // 스크롤이 바닥에 도달했을 때 판별?
+        // document의 높이와 현재 스크롤의 위치$(window).scrollTop()를 알아야함
+        if (
+          $(document).height() - $(window).height() ==
+          $(window).scrollTop()
+        ) {
+          console.log("hello");
+        }
+        console.log(document.body.scrollHeight);
+        console.log("hello");
+      });
+
+      // 비밀번호에서 enter를 치는 이벤트
+      // keydown : 선택한 요소에서 키보드를 누르는 이벤트가 발생할 경우
+      // // keyup :선택한 요소에서 키보드를 떼는 이벤트가 발생할 경우
+      // $("input[name=pw]").keyup(function (event) {
+      //   // console.log("key:", event.key);
+      //   if (event.key == "Enter") console.log("value:", this.value); //login();
+      //   // if (event.keyCode == 13) console.log("value:", this.value); //login();
+      // });
+
+      $(".container").click((event) => {
+        // event가 걸린 요소를 this에 담음
+        console.log(this);
+        $(this).css("background-color", "red");
+        // $(".container").css("background-color", "red");
+      });
+
+      // on : 이벤트를 걸겠다
+      // 이렇게 표현할 수도 있다..!
+      $("input[name=pw]").on("keydown", function (event) {
+        // console.log("key:", event.key);
+        if (event.key == "Enter") console.log("value:", this.value); //login();
+        // if (event.keyCode == 13) console.log("value:", this.value); //login();
+      });
+
+      const container = document.getElementsByClassName("container");
+      for (let i = 0; i < container.length; i++) {
+        // jQuery의 on과 비슷
+        container[0].addEventListener("click", function () {
+          this.style.backgroundColor = "red";
+        });
+      }
+      // on메서드와 addeventlister의 차이점은 on은 모든 요소에 가능하고
+      // addeventlinster는 하나의 요소만 해당되기때문에 반복문 등으로 지정해줘야함
+    </script>
+  </body>
+</html>
