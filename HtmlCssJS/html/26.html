@@ -114,7 +114,7 @@
       </div>
     </header>
     <script>
-      const navbarMenu = document.querySelector(".navbar_menu");
+      const navbarMenu = document.querySelector(".menu");
       navbarMenu.addEventListener("click", (event) => {
         const target = event.target;
         const link = target.dataset.link;
@@ -125,7 +125,8 @@
         scrollIntoView(link);
         selectNavItem(target);
       });
-      const navbarToggleBtn = document.querySelector(".logo");
+
+      const navbarToggleBtn = document.querySelector(".menu");
       navbarToggleBtn.addEventListener("click", () => {
         navbarMenu.classList.toggle("open");
       });
