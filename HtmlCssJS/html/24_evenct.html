@@ -9,25 +9,43 @@
       integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
       crossorigin="anonymous"
     ></script>
+    <style>
+      table {
+        margin-top: 50px;
+      }
+      td {
+        cursor: pointer;
+        width: calc(100% / 7);
+        height: 80px;
+        vertical-align: top;
+      }
+
+      tr > td:first-child tr > th:first-child {
+        color: red;
+      }
+      tr > td:last-child tr > th:last-child {
+        color: blue;
+      }
+    </style>
   </head>
   <body>
     <h1>스케줄2</h1>
     <form>
       <!-- <input type="hidden" id="number" /> -->
-      <div>날짜: <input type="text" id="date" /></div>
-      <div>내용: <input type="text" id="naeyong" /></div>
-      <button type="button" onclick="valueInput">작성</button>
+      <div>날짜: <input type="text" name="date" /></div>
+      <div>내용: <input type="text" name="todo" /></div>
+      <button type="button" onclick="addSchedule()">작성</button>
     </form>
-    <table align="center" cellspacing="0" cellpadding="50px">
+    <table align="center" cellspacing="0" cellpadding="30px">
       <tbody>
         <tr>
-          <td style="color: red">日</td>
-          <td>月</td>
-          <td>火</td>
-          <td>水</td>
-          <td>木</td>
-          <td>金</td>
-          <td>土</td>
+          <th>日</th>
+          <th>月</th>
+          <th>火</th>
+          <th>水</th>
+          <th>木</th>
+          <th>金</th>
+          <th>土</th>
         </tr>
         <tr>
           <td></td>
@@ -86,21 +104,23 @@
       </tbody>
     </table>
     <script>
-      let date;
+      let dateEl;
 
+      // $("td").click()
       $("td").on("click", function () {
         console.log(this);
-        console.log($(this).text());
+        // console.log($(this).text());
         // const value1 = document.getElementById("date").value;
-        $("#date").val(this.innerText);
-        date = this;
-        console.log(date);
+        const date = $(this).text();
+        // val()은 제이쿼리 문법임
+        $("input[name=date]").val(date);
+        dateEl = this;
       });
       // 이거 왜 안돼지?
-      function valueInput() {
-        // 원하는 td태그 선택
-        const lll = $("#naeyong").val();
-        $(date).append(lll);
+
+      function addSchedule() {
+        const todo = $("input[name=todo]").val();
+        $(dateEl).append("</br>", todo);
       }
     </script>
   </body>

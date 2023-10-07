@@ -29,7 +29,7 @@
         width: 100%;
         height: var(--nav-height-lg);
         z-index: 100;
-        position: fixed;
+        /* position: fixed; */
       }
 
       /* 768px 보다 클때의 header */
@@ -37,8 +37,9 @@
         background-color: lightblue;
         height: 100%;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
+        position: relative;
       }
 
       /* LOGO */
@@ -51,13 +52,13 @@
 
       header .inner .menu {
         display: flex;
-        justify-content: center;
       }
 
       header .inner .menu li {
         margin: 0px 3px;
         font-weight: 700;
         display: inline-block;
+        cursor: pointer;
       }
 
       /* 미디어 쿼리 작성 768px 이하일 때  */
@@ -80,18 +81,23 @@
         header .inner .logo {
           /* color: white; */
           /* font-size: 30px; */
-          position: relative;
-          left: 0px;
+          position: static;
+          height: 100%;
+          line-height: var(--nav-height-sm);
+          text-align: center;
         }
 
         header .inner .menu {
           flex-direction: column;
           justify-content: center;
-          background-color: beige;
+          background-color: rgb(214, 221, 236);
           width: 100%;
         }
 
         header .inner .menu li {
+          margin: 1px;
+          padding: 3px;
+          border: 2px solid black;
           font-weight: 300;
           display: block;
           text-align: center;
@@ -113,23 +119,6 @@
         </ul>
       </div>
     </header>
-    <script>
-      const navbarMenu = document.querySelector(".menu");
-      navbarMenu.addEventListener("click", (event) => {
-        const target = event.target;
-        const link = target.dataset.link;
-        if (link == null) {
-          return;
-        }
-        navbarMenu.classList.remove("open");
-        scrollIntoView(link);
-        selectNavItem(target);
-      });
-
-      const navbarToggleBtn = document.querySelector(".menu");
-      navbarToggleBtn.addEventListener("click", () => {
-        navbarMenu.classList.toggle("open");
-      });
-    </script>
+    <script></script>
   </body>
 </html>
