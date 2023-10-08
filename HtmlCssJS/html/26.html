@@ -8,6 +8,11 @@
       src="https://kit.fontawesome.com/837ff3adc1.js"
       crossorigin="anonymous"
     ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
     <style>
       :root {
         --nav-height-lg: 100px;
@@ -42,6 +47,13 @@
       }
 
       /* LOGO */
+      .show {
+        display: block;
+      }
+      .hide {
+        display: none;
+      }
+
       header .inner .logo {
         color: white;
         font-size: 30px;
@@ -114,21 +126,19 @@
       </div>
     </header>
     <script>
-      const navbarMenu = document.querySelector(".menu");
-      navbarMenu.addEventListener("click", (event) => {
-        const target = event.target;
-        const link = target.dataset.link;
-        if (link == null) {
-          return;
-        }
-        navbarMenu.classList.remove("open");
-        scrollIntoView(link);
-        selectNavItem(target);
-      });
-
-      const navbarToggleBtn = document.querySelector(".menu");
-      navbarToggleBtn.addEventListener("click", () => {
-        navbarMenu.classList.toggle("open");
+      $(document).ready(function () {
+        logo = $(".logo");
+        menu = $(".menu");
+        logo.click(function () {
+          menu.toggle(
+            function () {
+              menu.addClass("show");
+            },
+            function () {
+              menu.addClass("hide");
+            }
+          );
+        });
       });
     </script>
   </body>
