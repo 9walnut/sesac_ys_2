@@ -15,7 +15,7 @@ app.set("view engine", "ejs");
 // app.set("views", "./view")
 
 app.use("/static", express.static(__dirname + "/static"));
-// c://users~~~/01-express/statia을 /stac으로 들어올 수 있는 것임
+// c://users~~~/01-express/statc을 /stac으로 들어올 수 있는 것임
 
 // app.use("/public", express.static(__dirname + "static"));
 // c://users~~~/01-express/statia을 /public 이라는 이름으로 들어올 수 있는 것임
@@ -36,7 +36,7 @@ app.get("/", function (req, res) {
 // localhost:8000/test
 app.get("/test", function (req, res) {
   // res.send("test");
-  // console.log(__dirname);
+  console.log(__dirname);
   res.sendFile(__dirname + "/index.html");
   // res.sendFile("./index.html");
 });
@@ -44,17 +44,17 @@ app.get("/test", function (req, res) {
 app.get("/ejs", function (req, res) {
   // render의 기본 dir : "./views"
   // res.render("index.ejs");
-  res.render("guho.ejs");
+  res.render("test/index.ejs");
 });
-// ("요쳥", "응답")
-// app.get("/guho", function (req, res) {
-// render의 기본 dir : "./views"
-// res.render("index.ejs");
-// res.render("guho", {
-//   name: "guho",
-//   product: ["운동화", "후드집업", "스웨터"],
-// });
-// });
+"요쳥", "응답";
+app.get("/guho", function (req, res) {
+  // render의 기본 dir : "./views"
+  // res.render("index.ejs");
+  res.render("guho", {
+    name: "guho",
+    product: ["운동화", "후드집업", "스웨터"],
+  });
+});
 
 // 서버를 연다
 app.listen(PORT, function () {
