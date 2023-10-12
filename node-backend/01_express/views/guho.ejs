@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <%=name %>
+    <!-- ejs 태그 안에 오는 js 코드는 한줄로 끝나야함 -->
+    <% for(var i = 0; i < product.length; i++){ %>
+    <!-- ejs 태그 안에 = 이 오면 뒤에 있는 변수나 값을 html로 노출 시킨다-->
+    <h1>상품 <%=product[i] %></h1>
+    <% } %>
+
+    <!-- ejs 태그 안에 = 이 오면 뒤에 있는 변수나 값을 html로 노출 시킨다-->
+    <%="hello guho" %> <%="hello guho" %> <%="hello guho" %> <%="hello guho" %>
+    <!-- ejs 태그 안에 - 이 오면 뒤에 있는 변수나 값을 html로 노출 시킨다(html 태그를 인식)-->
+    <%="<div>안녕하세요<div>" %>
+    <%-"<div>안녕하세요<div>" %>
+
+
+  </body>
+  <script>
+    // 백엔드에서 사용하는 product는 여기서 안나옴
+  </script>
+</html>
