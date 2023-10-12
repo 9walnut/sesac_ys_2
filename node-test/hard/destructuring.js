@@ -36,3 +36,24 @@ const word1 = "abc";
 const word2 = "xyz";
 const word3 = (word1 + word2).split("");
 console.log(word3);
+
+const obj2 = {
+  name: "guho",
+  gender: "male",
+  age: 31,
+};
+const obj3 = {
+  // obj2의 키-밸류 전부 가져오기
+  ...obj2,
+  test: "test",
+};
+
+console.log(obj3);
+
+const values = [10, 20, 30];
+function get(a, ...rest) {
+  console.log(a);
+  console.log(rest);
+}
+
+get(...values);
