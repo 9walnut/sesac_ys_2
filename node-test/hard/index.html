@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      async function changeColor(color) {
+        return new Promise(function(resolve, reject) {
+          setTimeout(function() {
+            document.body.style.backgroundColor = color
+            resolve();
+          }, 1000);
+        })
+      }
+
+
+      async function exec2() {
+        await changeColor("red");
+        await changeColor("orane");
+        await changeColor("yellow");
+        await changeColor("green");
+        await changeColor("blue");
+      }
+
+      exec2()
+    </script>
+  </body>
+</html>
