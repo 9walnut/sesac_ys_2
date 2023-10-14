@@ -66,33 +66,33 @@
 // });
 
 // // Promise로 변환
-// function add(n1, n2) {
-//   return new Promise(function (resolve, reject) {
-//     setTimeout(function () {
-//       let result = n1 + n2;
-//       resolve(result);
-//     }, 1000);
-//   });
-// }
+function add(n1, n2) {
+  return new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      let result = n1 + n2;
+      resolve(result);
+    }, 1000);
+  });
+}
 
-// function mul(n) {
-//   return new Promise(function (resolve, reject) {
-//     setTimeout(function () {
-//       let result = n * 2;
-//       resolve(result);
-//       // reject("오류 발생");
-//     }, 700);
-//   });
-// }
+function mul(n) {
+  return new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      let result = n * 2;
+      resolve(result);
+      // reject("오류 발생");
+    }, 700);
+  });
+}
 
-// function sub(n) {
-//   return new Promise(function (resole, reject) {
-//     setTimeout(function () {
-//       let result = n - 1;
-//       resole(result);
-//     }, 500);
-//   });
-// }
+function sub(n) {
+  return new Promise(function (resole, reject) {
+    setTimeout(function () {
+      let result = n - 1;
+      resole(result);
+    }, 500);
+  });
+}
 
 // // catch는 계속 써줄 필요 없고 미자믹만 써주면 됨
 // add(4, 3)
@@ -170,3 +170,5 @@ async function exec() {
 }
 
 exec();
+
+function test() {}
