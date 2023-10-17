@@ -54,6 +54,10 @@ app.post("/post", function (req, res) {
   res.send("post 요청 성공!");
 });
 
+app.post("/validation", function (req, res) {
+  res.send("post 요청 성공!");
+});
+
 app.post("/post/ver2", function (req, res) {
   console.log(req.body);
   res.render("result", {
