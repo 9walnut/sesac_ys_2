@@ -35,6 +35,16 @@ app.post("/axios", function (req, res) {
   res.send(data);
 });
 
+app.get("/fetch", function (req, res) {
+  console.log(req.query);
+  res.send(req.query);
+});
+
+app.post("/fetch", function (req, res) {
+  console.log(req.body);
+  res.send(req.body);
+});
+
 app.listen(PORT, function () {
   console.log(`Sever Open: ${PORT}`);
 });

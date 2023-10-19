@@ -20,6 +20,9 @@
       <br>
       <button type="button" onclick="axiosGet()">axios get 전송</button>
       <button type="button" onclick="axiosPost()">axios post 전송</button>
+      <br>
+      <button type="button" onclick="fetchGet()">fetch get 전송</button>
+      <button type="button" onclick="fetchPost()">fetch get 전송</button>
 
 
       <!-- 아래 두 줄은 일반 폼 전송할 때 type submit 사용 -->
@@ -130,7 +133,69 @@
           $("#result").html(`axios POST 요청 성공 ${name}님 환영합니다`)
         })
       }
-    </script>
 
+
+
+
+      async function fetchGet() {
+        const data = getData()
+        if (!data) return;
+        // fetch(url, option 객체)
+        // url => action
+        // option 객체에 method가 있음
+        // fetch는 method 기본값 get
+        // fetch는 get 요청시 데이터를 query로 만들어서 url과 함꼐 전송
+
+        // 방법 1 - then으로 계속 받은 후 json()형태로 then 체이닝 다시
+
+        fetch(`/fetch?${urlQuery}`)
+          .then((res) => {
+            console.log("원본", res);
+            console.log("파싱", res.json)
+            // 응답을 파싱해야함. .json(), .text();
+          })
+
+        // 방법 2 = async, await
+        // const urlQuery = `id=${data.id}&name=${data.name}&pw=${data.pw}`
+        // 쿼리 만드는 메서드 - 위랑 동일함
+        const urlQuery = new URLSearchParams(data).toString()
+
+
+        fetch(`/fetch?${urlQuery}`).then(async (res) => {
+          console.log("원본", res);
+          console.log("파싱", await res.json)
+          // 응답을 파싱해야함. .json(), .text();
+        })
+
+
+        // 방법 3 - 함수 자체를 asnysc로 만들어서
+        const oriRes = await fetch(`/fetch?${urlQuery}`)
+        const parse = await oriRes.json()
+        console.log(parse)
+
+      }
+
+
+
+      function fetchPost() {
+        const data = getData()
+        if (!data) return;
+        // 원래는 content-type 기본값 사용 : application/x-www-unlecoded
+        // 하지만, fetch post 요청시 변경해줘야함. 기본값시 동작을 안함
+        // content-type을 application/json으로 변경
+        fetch("/fetch", {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data), //data 객체를 json형태로 변경
+        }).then((res) => {
+          return res.json()
+        }).then((res) => {
+          console.log(res)
+          $("#result").html(`fetch post 요청 성공 ${res.name}님 환영합니다`)
+        })
+      }
+    </script>
   </body>
 </html>
