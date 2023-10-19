@@ -23,12 +23,12 @@ app.get("/", function (req, res) {
 // get요청을 위해선 query를 사용해야함
 // CRUD 중 READ를 의미하는 요청에 사용
 // get은 url에 전송되는 데이터가 노출된다. 개인정보를 위한 전송은 get을 사용하면 안됀다
+//  req,query: get요청에 대해 client가 보낸 데이터를 담고 있음
+//  url에서 기본 주소 뒤에 오는 주소를 의미
+//  ?id=guho&pw-1234
+//   req.query;
 app.get("/get", function (req, res) {
   console.log(req.query);
-  //  req,query: get요청에 대해 client가 보낸 데이터를 담고 있음
-  //  url에서 기본 주소 뒤에 오는 주소를 의미
-  //  ?id=guho&pw-1234
-  //   req.query;
   res.send("get 요청 성공");
 });
 // 조회, 데이터 저장, 원래있던 데이터 변경
