@@ -24,3 +24,12 @@ ALTER TABLE user MODIFY gender VARCHAR(4);
 
 --테이블 삭제
 DROP TABLE user
+
+--DML
+--select
+
+--insert
+
+--update
+
+--delete
