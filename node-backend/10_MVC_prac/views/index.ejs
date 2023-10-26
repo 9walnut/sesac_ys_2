@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h3 id="result"></h3>
+    <form name="login">
+      <fieldset>
+        <legend>로그인정보</legend>
+        <input type="text" name="input_id">
+        <input type="password" name="input_pw">
+      </fieldset>
+      <button type="button" onclick="axiosPost()">로그인</button>
+      <h3 id="message"></h3>
+    </form>
+  </body>
+  <script>
+    function getData2() {
+      const form = document.forms["login"]
+      const data = {
+        id: form.input_id.value,
+        pw: form.input_pw.value,
+      }
+      return data
+    }
+
+    async function axiosPost() {
+      const data = getData2();
+      const res = await axios({
+        method: "POST",
+        url: "/axios",
+        data: data,
+      })
+      if (res.data == "success") {
+        $("#message").html("로그인에 성공했습니다").css({
+          'color': 'blue'
+        });
+      } else
+        $("#message").html("로그인에 실패했습니다").css({
+          'color': 'red'
+        })
+    }
+  </script>
+</html>

@@ -21,7 +21,7 @@ app.post("/axios", function (req, res) {
   const id = "guho";
   const pw = "guho";
 
-  if (req.body.id2 == id && req.body.pw2 == pw) {
+  if (req.body.id == id && req.body.pw == pw) {
     res.send("success");
   } else res.send("failed");
   res.send(data);
