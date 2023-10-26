@@ -1,3 +1,7 @@
+let users = `spreatics//12341234//코딩온
+codee//4321//코디
+lily//1234//릴리`;
+
 exports.axoisInfos = () => {
   return [
     {
@@ -5,4 +9,22 @@ exports.axoisInfos = () => {
       pw: "guho",
     },
   ];
+};
+
+let str = users.split("\n");
+const userList = [];
+for (let i = 0; i < str.length; i++) {
+  let temp = str[i].split("//");
+  userList.push({
+    userId: temp[0],
+    userPw: temp[1],
+    userName: temp[2],
+  });
+}
+
+console.log(userList);
+
+// [{userId: sprea, userPw: 1234,},]
+exports.userInfos = () => {
+  return userList;
 };

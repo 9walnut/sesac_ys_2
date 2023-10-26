@@ -3,6 +3,11 @@ const Router = express.Router();
 const controller = require("../controller/Cmain");
 
 Router.get("/", controller.main);
+
+Router.get("/axiosGet", controller.axiosGet);
+
 Router.post("/axios", controller.axoisInfos);
+
+Router.post("/axios2", controller.usersList);
 
 module.exports = Router;

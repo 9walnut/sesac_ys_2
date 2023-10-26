@@ -8,18 +8,92 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
-    <h3 id="result"></h3>
-    <form name="login">
+
+    <form name="register">
+      이름 <input type="text" name="name" required>
       <fieldset>
-        <legend>로그인정보</legend>
-        <input type="text" name="input_id">
-        <input type="password" name="input_pw">
+        <legend>성별</legend>
+        <input type="radio" name="gender" value="male" id="man"> <label for="man">남자</label>
+        <input type="radio" name="gender" value="female" id="woman"> <label for="woman">여자</label>
       </fieldset>
-      <button type="button" onclick="axiosPost()">로그인</button>
-      <h3 id="message"></h3>
-    </form>
+      <fieldset>
+        <legend>생년월일</legend>
+        <select name="year">
+          <% for(var i = 1970; i <= 2023; i++){ %>
+          <option value="<%= i %>"> <%= i %></option>
+          <%  } %>
+        </select>
+        <select name="month">
+          <% for(var i = 1; i <= 12; i++){ %>
+          <option value="<%= i %>"> <%= i %></option>
+          <%  } %>
+        </select>
+        <select name="day">
+          <% for(var i = 1; i <= 31; i++){ %>
+          <option value="<%= i %>"> <%= i %></option>
+          <%  } %>
+        </select>
+      </fieldset>
+      <fieldset>
+        <legend>관심사</legend>
+        <input type="checkbox" name="interest" value="travel"> <label for="travel">여행</label>
+        <input type="checkbox" name="interest" value="fassion"><label for="fassion">패션</label>
+        <input type="checkbox" name="interest" value="food" id="food"><label for="food">음식</label>
+      </fieldset>
+      <button type="button" onclick="axiosGet()">회원가입 axios get</button>
+      <h3 id="result"></h3>
+      <form name="login">
+        <fieldset>
+          <legend>로그인정보</legend>
+          <input type="text" name="input_id">
+          <input type="password" name="input_pw">
+        </fieldset>
+        <button type="button" onclick="axiosPost()">로그인</button>
+        <h3 id="message"></h3>
+      </form>
+      <form name="login">
+        <fieldset>
+          <legend>로그인 실습2</legend>
+          <input type="text" name="input_id2">
+          <input type="password" name="input_pw2">
+        </fieldset>
+        <button type="button" onclick="axiosPost2()">로그인</button>
+        <h3 id="message2"></h3>
+      </form>
   </body>
   <script>
+    function getData() {
+      const form = document.forms["register"]
+      const interest = []
+      for (let input of form.interest) {
+        if (input.checked) interest.push(input.value)
+      }
+      const data = {
+        name: form.name.value,
+        year: form.year.value,
+        month: form.month.value,
+        day: form.day.value,
+        interest: interest
+      }
+      return data
+    }
+
+    function axiosGet() {
+      const data = getData()
+      axios({
+        method: "GET",
+        url: "/axiosGet",
+        params: data
+      }).then((res) => {
+        console.log("res : ", res)
+        const {
+          name
+        } = res.data
+        console.log("resdata : ", res.data)
+      })
+    }
+
+
     function getData2() {
       const form = document.forms["login"]
       const data = {
@@ -29,7 +103,7 @@
       return data
     }
 
-    async function axiosPost() {
+    async function axiosPost2() {
       const data = getData2();
       const res = await axios({
         method: "POST",
@@ -42,6 +116,32 @@
         });
       } else
         $("#message").html("로그인에 실패했습니다").css({
+          'color': 'red'
+        })
+    }
+
+    function getData3() {
+      const form = document.forms["login"]
+      const data = {
+        id: form.input_id2.value,
+        pw: form.input_pw2.value,
+      }
+      return data
+    }
+
+    async function axiosPost2() {
+      const data2 = getData3();
+      const res = await axios({
+        method: "POST",
+        url: "/axios2",
+        data: data2,
+      })
+      if (res.data.msg == "success") {
+        $("#message2").html(res.data.name + "님 환영합니다").css({
+          'color': 'blue'
+        });
+      } else
+        $("#message2").html("아이디 또는 비밀번호를 잘못 입력했습니다").css({
           'color': 'red'
         })
     }
