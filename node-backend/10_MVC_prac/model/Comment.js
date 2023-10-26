@@ -12,9 +12,11 @@ exports.axoisInfos = () => {
 };
 
 let str = users.split("\n");
+console.log(str);
 const userList = [];
 for (let i = 0; i < str.length; i++) {
   let temp = str[i].split("//");
+  console.log(temp);
   userList.push({
     userId: temp[0],
     userPw: temp[1],
@@ -24,7 +26,6 @@ for (let i = 0; i < str.length; i++) {
 
 console.log(userList);
 
-// [{userId: sprea, userPw: 1234,},]
 exports.userInfos = () => {
   return userList;
 };

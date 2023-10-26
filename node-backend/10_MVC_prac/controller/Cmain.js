@@ -8,7 +8,6 @@ exports.axiosGet = (req, res) => {
   console.log(req.query);
   res.send(req.query);
 };
-
 exports.axoisInfos = (req, res) => {
   const userData = axoisInfos();
   const data = {
