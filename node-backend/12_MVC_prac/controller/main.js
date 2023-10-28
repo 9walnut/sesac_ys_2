@@ -46,3 +46,27 @@ exports.login = (req, res) => {
     res.send(data);
   });
 };
+
+exports.patchLogin = (req, res) => {
+  // console.log(req.body);
+
+  model.patchLogin(req.body, (result) => {
+    console.log("ctrl getVisitorById: patchVisitor", result);
+    res.send({ result: true });
+  });
+};
+
+exports.deletelog = (req, res) => {
+  console.log(req.params);
+  model.deletelogin(req.params.id, (result) => {
+    res.send({ result: result });
+  });
+};
+
+// GET /visitor/:id => 방명록 하나 조회
+exports.getLoginById = (req, res) => {
+  model.getLoginById(req.params.id, (result) => {
+    console.log("ctrl getVisitorById: ", result);
+    res.send(result);
+  });
+};
