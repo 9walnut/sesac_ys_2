@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <form action="/" method="POST" name="prac">
+      <fieldset>
+        <legend>환영합니다</legend>
+        <input type="text" name="id" placeholder="아이디" /><br />
+        <input type="text" name="userid" placeholder="유저아이디" /><br />
+        <input type="text" name="name" placeholder="이름" /><br />
+        <input type="password" name="password" placeholder="비밀번호" /><br /><br />
+        <button type="button" onclick="signUp()">회원가입</button>
+        <button type="button" onclick="login()">로그인</button>
+        <button type="button" onclick="modified()">회원정보 수정</button>
+        <button type="button" onclick="deleteLog()">회원정보 삭제</button>
+      </fieldset>
+    </form>
+    <h3 id="message2"></h3>
+
+    <form action="/login" method="POST" name="prac2">
+      <fieldset>
+        <legend>환영합니다</legend>
+        <input type="text" name="userid" placeholder="유저아이디" /><br />
+        <input type="password" name="password" placeholder="비밀번호" /><br /><br />
+        <button type="button" onclick="login()">로그인</button>
+      </fieldset>
+    </form>
+    <h3 class="message4"></h3>
+    <script>
+      function signUp() {
+        const form = document.forms["prac"]
+        const data = {
+          id: form.id.value,
+          userid: form.userid.value,
+          name: form.name.value,
+          password: form.password.value
+        }
+        // aiox를 이용해 데이터를 서버로 전송
+        axios({
+          method: 'post',
+          url: "/register",
+          data: data
+        }).then((res) => {
+          const {
+            id,
+            userid,
+            name,
+            password
+          } = res.data
+        })
+      }
+
+      function deleteLog(id, TrElement) {
+        axios({
+          method: 'delete',
+          url: `/visitor/${id}`
+        }).then((res) => {
+          console.log(res.data);
+
+          if (res.data.result) {
+            $(TrElement).remove();
+          } else {
+            alert("존재하지 않는 방명록입니다.");
+          }
+        })
+      }
+
+      function login() {
+        const form = document.forms["prac2"]
+        const data = {
+          userid: form.userid.value,
+          password: form.password.value
+        }
+        axios({
+          method: "POST",
+          url: "/login",
+          data: data
+        }).then((res) => {
+          const {
+            isSuccess,
+            msg
+          } = res.data
+          console.log(isSuccess)
+          if (isSuccess) {
+            const element = document.querySelector(".message4");
+            element.innerHTML = msg;
+          } else {
+            const element = document.querySelector(".message4");
+            element.innerHTML = msg;
+          }
+        })
+      }
+    </script>
+  </body>
+</html>
