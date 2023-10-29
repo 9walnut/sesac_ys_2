@@ -10,14 +10,38 @@
   <body>
     <form name="prac">
       <fieldset>
-        <legend>회원정보 삭제</legend>
+        <legend>회원가입</legend>
         <input type="text" name="userid" placeholder="유저아이디" /><br />
         <input type="text" name="name" placeholder="이름" /><br />
         <input type="password" name="password" placeholder="비밀번호" /><br /><br />
         <div class="btn-group">
-          <button type="button" onclick="location.href='delete.ejs'">회원정보 삭제</button>
+          <button type="button" onclick="signUp()">회원가입</button>
+          <button type="button"><a href="/">취소</a></button>
         </div>
       </fieldset>
     </form>
   </body>
+  <script>
+    function signUp() {
+      const form = document.forms["prac"]
+      if (!form.checkValidity()) {
+        form.reportValidity()
+        return false;
+      }
+      const data = {
+        userid: form.userid.value,
+        name: form.name.value,
+        password: form.password.value
+      }
+
+      axios({
+        method: 'post',
+        url: "/signup",
+        data: data
+      }).then((res) => {
+        alert('회원가입에 성공하셨습니다.')
+        document.location.href = '/';
+      })
+    }
+  </script>
 </html>
