@@ -14,7 +14,7 @@ Router.post("/login", controller.post_login);
 
 // 프로필
 Router.post("/profile", controller.post_profile);
-// Router.patch("/profile/edit/:id", controller.profile_edit);
-// Router.delete("/profile/delete/:id", controller.profile_delete);
+Router.patch("/profile/edit/:id", controller.profile_edit);
+Router.delete("/profile/delete/:id", controller.profile_delete);
 
 module.exports = Router;

@@ -36,16 +36,16 @@ exports.get_user = (id, cb) => {
   });
 };
 
-// exports.update_profile = (data, cb) => {
-//   let sql = `UPDATE userInfos SET name='${data.name}', pw='${data.pw}' WHERE id='${data.id}'`;
-//   conn.query(sql, (err) => {
-//     if (err) throw err;
-//     cb();
-//   });
-// };
-// exports.delete_user = (id, cb) => {
-//   conn.query(`DELETE FROM userInfos WHERE id='${id}'`, (err) => {
-//     if (err) throw err;
-//     cb();
-//   });
-// };
+exports.update_profile = (data, cb) => {
+  let sql = `UPDATE userInfos SET name='${data.name}', pw='${data.pw}' WHERE id='${data.id}'`;
+  conn.query(sql, (err) => {
+    if (err) throw err;
+    cb();
+  });
+};
+exports.delete_user = (id, cb) => {
+  conn.query(`DELETE FROM userInfos WHERE id='${id}'`, (err) => {
+    if (err) throw err;
+    cb();
+  });
+};

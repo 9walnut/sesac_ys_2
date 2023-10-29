@@ -7,11 +7,9 @@
     <title>프로필</title>
   </head>
   <body>
-    <div class="scene flex">
+    <fieldset>
+      <legend>수정/삭제</legend>
       <section class="card">
-        <h1 class="card__heading">
-          <span> Welcome</span>
-        </h1>
         <form class="card__form" id="form_profile">
           <input type="hidden" name="id" value="<%=data.id%>" disabled />
           <label for="userid" class="visually">ID :</label>
@@ -28,7 +26,7 @@
           </button>
         </form>
       </section>
-    </div>
+    </fieldset>
   </body>
   <script>
     function profileEdit() {

@@ -42,7 +42,7 @@ exports.profile_edit = (req, res) => {
     ...req.body,
     id: req.params.id,
   };
-  User.update_profile(data, function () {
+  model.update_profile(data, function () {
     res.send({ result: true });
   });
 };

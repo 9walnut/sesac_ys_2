@@ -11,21 +11,20 @@
 
     <fieldset>
       <legend>로그인 정보</legend>
-      <form name="form-info" action="/login" method="POST">
+      <form name="form-info" action="/profile" method="POST">
         <input type="hidden" name="id">
       </form>
       <form name="prac">
+        <label for="ID">ID : </label>
         <input type="text" name="userid" placeholder="유저아이디" /><br />
+        <label for="password">P.W : </label>
         <input type="password" name="password" placeholder="비밀번호" /><br /><br />
         <div class="btn-group">
           <button type="button" onclick="login()">로그인</button>
           <button type="button"><a href="/signup">회원가입</a></button>
-          <button type="button" onclick="profileDelete()">회원정보 삭제</a></button>
-          <button type="button" onclick="profile()">회원정보 수정</a></button>
         </div>
       </form>
     </fieldset>
-
   </body>
   <script>
     function login() {
@@ -50,30 +49,8 @@
           var form_info = document.forms["form-info"];
           form_info.id.value = res.data.id;
           form_info.submit();
-          document.location.href = "/profile"
         } else {
-          alert("정보확인실패");
-        }
-      });
-    }
-
-    function profileDelete() {
-      var form = document.getElementById("form_profile");
-      if (!form.checkValidity()) {
-        form.reportValidity();
-
-        return false;
-      }
-
-      axios({
-        method: 'delete',
-        url: `/profile/delete/${form.id.value}`,
-      }).then((res) => {
-        if (res.data.result) {
-          alert("회원 탈퇴 성공");
-          document.location.href = "/signin";
-        } else {
-          alert("알 수 없는 문제가 발생했습니다.");
+          alert("실패!");
         }
       });
     }
