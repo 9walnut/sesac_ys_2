@@ -2,7 +2,7 @@ const mysql = require("mysql");
 
 const conn = mysql.createConnection({
   host: "localhost",
-  user: "user",
+  user: "user2",
   password: "qwer1234!",
   database: "sesac_test",
 });
@@ -20,6 +20,7 @@ exports.post_signup = (data, cb) => {
 
 // 로그인
 exports.post_login = (data, cb) => {
+  // select는 배열로 반환됨
   let sql = `SELECT * FROM userInfos WHERE userid='${data.userid}' and pw='${data.password}' limit 1;`;
   conn.query(sql, function (err, rows) {
     if (err) throw err;

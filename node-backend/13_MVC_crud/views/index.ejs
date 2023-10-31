@@ -48,12 +48,12 @@
                   <form name="prac">
                     <label class="form-label" for="ID">ID</label>
                     <div class="form-outline form-white mb-4">
-                      <input type="text" name="userid" class="form-control form-control-lg" />
+                      <input type="text" id="ID" name="userid" class="form-control form-control-lg" />
                     </div>
 
                     <div class="form-outline form-white mb-4">
                       <label class="form-label" for="password">Password</label>
-                      <input type="password" name="password" class="form-control form-control-lg" />
+                      <input type="password" id="password" name="password" class="form-control form-control-lg" />
                     </div>
 
                     <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
@@ -89,10 +89,10 @@
         return false;
       }
       let data = {
-        id: form.id.value,
+        // id: form.id.value,
         userid: form.userid.value,
         password: form.password.value,
-        name: form.name.value
+        // name: form.name.value
       };
       axios({
         method: 'post',
@@ -100,7 +100,7 @@
         data: data
       }).then((res) => {
         if (res.data.result == true) {
-          var form_info = document.forms["form-info"];
+          const form_info = document.forms["form-info"];
           form_info.id.value = res.data.id;
           form_info.submit();
         } else {

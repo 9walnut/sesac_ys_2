@@ -22,7 +22,7 @@ exports.login = (req, res) => {
 
 exports.post_login = (req, res) => {
   model.post_login(req.body, function (rows) {
-    // console.log(rows[0]);
+    // console.log(rows);
     if (rows.length > 0) res.send({ result: true, id: rows[0].id });
     else res.send({ result: false });
   });
@@ -31,13 +31,15 @@ exports.post_login = (req, res) => {
 // 프로필
 exports.post_profile = (req, res) => {
   model.get_user(req.body.id, function (result) {
-    console.log("profile", result);
+    console.log("profile : ", result);
     if (result.length > 0) res.render("profile", { data: result[0] });
     else res.redirect("/signin");
   });
 };
 
 exports.profile_edit = (req, res) => {
+  // profile.ejs에서 data.id를 활용해서 value를 지정하기 때문에
+  // data로 객체 정의
   const data = {
     ...req.body,
     id: req.params.id,
