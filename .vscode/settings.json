@@ -2,11 +2,14 @@
   "emmet.includeLanguages": {
     "ejs": "html"
   },
+  "editor.codeActionsOnSave": { "source.organizeImports": true },
   "[html]": {
     "editor.defaultFormatter": "j69.ejs-beautify"
   },
   "js-beautify.extra_liners": [],
   "js-beautify.indent_inner_html": true,
   "js-beautify.indent_handlebars ": false,
-  "git.ignoreLimitWarning": true
+  "git.ignoreLimitWarning": true,
+  "workbench.colorTheme": "Default High Contrast",
+  "workbench.colorCustomizations": {}
 }
