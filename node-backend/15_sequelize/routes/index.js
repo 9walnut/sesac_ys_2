@@ -22,8 +22,6 @@ router.get("/visitor/:id", controller.getVisitorById);
 // 방명록 삭제
 router.delete("/visitor/:id", controller.deleteVisitor);
 
-router.get("/", controller.index);
-
 // 회원가입
 router.get("/user/signup", controller2.signup);
 router.post("/user/signup", controller2.post_signup);
