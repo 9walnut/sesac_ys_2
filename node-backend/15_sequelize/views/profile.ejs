@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,20 +9,10 @@
     <script src="/vendors/bootstrap/js/bootstrap.min.js"></script>
     <script src="/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/vendors/jquery/jquery.min.js "></script>
-    <title>Document</title>
+
+    <title>프로필</title>
   </head>
   <body>
-    <section class="vh-50 gradient-custom">
-      <div class="container bg-success w-100 p-3" style="border-radius: 1rem bg-opacity-50">
-        <div class="container justify-content-center align-content-center text-center ">
-          <h2 class="text-white">구호두의 놀이터에 온것을 환영합니다!</h2>
-          <p class="small mb-2 pb-lg-3">
-            <a class="text-white-50" href="/visitors">방명록으로 이동하기</a>
-          </p>
-        </div>
-      </div>
-    </section>
-
     <section class="vh-100 gradient-custom">
       <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -31,30 +20,42 @@
             <div class="card bg-dark text-white" style="border-radius: 1rem">
               <div class="card-body p-5 text-center">
                 <div class="mb-md-5 mt-md-4 pb-5">
-                  <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                  <h2 class="fw-bold mb-2 text-uppercase">
+                    Profile Edit / Delete
+                  </h2>
                   <p class="text-white-50 mb-5">
                     Please enter your login and password!
                   </p>
                   <form name="form-info" action="/user/profile" method="POST">
                     <input type="hidden" name="id" />
                   </form>
-                  <form name="prac">
-                    <label class="form-label" for="ID">ID</label>
+                  <form id="form_profile">
+                    <input type="hidden" name="id" value="<%=data.id%>" disabled />
+                    <label class="form-label" for="userid">ID</label>
                     <div class="form-outline form-white mb-4">
-                      <input type="text" id="ID" name="userid" class="form-control form-control-lg" />
+                      <input type="text" name="userid" class="form-control form-control-lg" value="<%=data.userid%>" readonly />
                     </div>
 
                     <div class="form-outline form-white mb-4">
                       <label class="form-label" for="password">Password</label>
-                      <input type="password" id="password" name="password" class="form-control form-control-lg" />
+                      <input type="password" name="password" class="form-control form-control-lg" value="<%=data.password%>" required />
+                    </div>
+
+                    <label class="form-label" for="ID">Name</label>
+                    <div class="form-outline form-white mb-4">
+                      <input type="text" name="userid" class="form-control
+                      form-control-lg" value="<%=data.name%>" required / />
                     </div>
 
                     <p class="small mb-5 pb-lg-2">
                       <a class="text-white-50" href="#!">Forgot password?</a>
                     </p>
                     <div class="btn-group">
-                      <button class="btn btn-outline-light btn-lg px-5" type="button" onclick="login()">
-                        Login
+                      <button class="btn btn-outline-light btn-lg px-5" type="button" onclick="profileEdit()">
+                        Edit
+                      </button>
+                      <button class="btn btn-outline-light btn-lg px-5" type="button" onclick="profileDelete()">
+                        Delete
                       </button>
                     </div>
                     <div class="d-flex justify-content-center text-center mt-4 pt-1">
@@ -64,7 +65,6 @@
                     </div>
                   </form>
                 </div>
-
                 <div>
                   <p class="mb-0">
                     Don't have an account?
@@ -79,30 +79,52 @@
     </section>
   </body>
   <script>
-    function login() {
-      var form = document.forms["prac"];
+    function profileEdit() {
+      const form = document.getElementById("form_profile");
       if (!form.checkValidity()) {
         form.reportValidity();
-        console.log("reportValidity");
+
         return false;
       }
       let data = {
-        // id: form.id.value,
         userid: form.userid.value,
         password: form.password.value,
-        // name: form.name.value
+        name: form.name.value,
       };
       axios({
-        method: "post",
-        url: "/user/login",
-        data: data,
+          method: "patch",
+          url: `/user/profile/edit/${form.id.value}`,
+          data: data,
+        })
+        .then((res) => {
+          if (res.data.result) {
+            alert("회원정보 수정 성공");
+          } else {
+            alert("알 수 없는 문제가 발생했습니다.");
+          }
+        })
+        .catch((err) => {
+          alert("알 수 없는 문제가 발생했습니다.");
+        });
+    }
+
+    function profileDelete() {
+      const form = document.getElementById("form_profile");
+      if (!form.checkValidity()) {
+        form.reportValidity();
+
+        return false;
+      }
+
+      axios({
+        method: "delete",
+        url: `/user/profile/delete/${form.id.value}`,
       }).then((res) => {
-        if (res.data.result == true) {
-          const form_info = document.forms["form-info"];
-          form_info.id.value = res.data.id;
-          form_info.submit();
+        if (res.data.result) {
+          alert("회원 탈퇴 성공");
+          document.location.href = "/";
         } else {
-          alert("실패!");
+          alert("알 수 없는 문제가 발생했습니다.");
         }
       });
     }
