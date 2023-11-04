@@ -42,6 +42,7 @@ exports.post_login = async (req, res) => {
     // console.log("userkkk", user);
     if (user) {
       // 사용자가 존재할 경우
+      req.session.user = user.id;
       res.send({ result: true, id: user.id });
     } else {
       // 사용자가 존재하지 않을 경우
@@ -52,14 +53,19 @@ exports.post_login = async (req, res) => {
     res.status(500).send({ result: false });
   }
 };
-
-// 프로필
+// ================= 수정 중 ===============================
+// 프로필 -
 exports.post_profile = async (req, res) => {
-  const userId = req.body.id;
+  if (!req.session.user) {
+    res.redirect("/user/login");
+    return false;
+  }
+
+  const sessionId = req.session.user;
 
   try {
     // Sequelize를 사용하여 사용자 검색
-    const user = await model.findOne({ where: { id: userId } });
+    const user = await model.findOne({ where: { id: sessionId } });
 
     if (user) {
       // 사용자가 존재할 경우
@@ -86,8 +92,9 @@ exports.profile_edit = (req, res) => {
       },
     })
     .then((result) => {
-      console.log("update");
-      res.send({ result: true });
+      console.log("update", result); // [1] or [0]
+      if (result[0]) res.send({ result: true });
+      else res.send({ result: false });
     });
 };
 
@@ -99,6 +106,15 @@ exports.profile_delete = (req, res) => {
       },
     })
     .then((result) => {
+      if (result) res.send({ result: true });
+      else res.send({ result: false });
+    });
+};
+
+exports.logout = (req, res) => {
+  if (req.session.user)
+    req.session.destroy(function (err) {
       res.send({ result: true });
     });
+  else res.send({ result: false });
 };

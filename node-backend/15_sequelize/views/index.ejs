@@ -98,9 +98,8 @@
         data: data,
       }).then((res) => {
         if (res.data.result == true) {
-          const form_info = document.forms["form-info"];
-          form_info.id.value = res.data.id;
-          form_info.submit();
+          alert("성공")
+          location.href = "/user/profile"
         } else {
           alert("실패!");
         }
