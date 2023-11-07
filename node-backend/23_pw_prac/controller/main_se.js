@@ -1,4 +1,5 @@
 const { model } = require("../model");
+const crypto = require("crypto");
 
 exports.index = (req, res) => {
   res.render("index");
@@ -9,11 +10,20 @@ exports.signup = (req, res) => {
 };
 
 exports.post_signup = async (req, res) => {
+  let body = req.body;
+  let inputPassword = body.password;
+  let salt = Math.round(new Date().valueOf() * Math.random()) + "";
+  let hashPassword = crypto
+    .createHash("sha512")
+    .update(inputPassword + salt)
+    .digest("hex");
+
   try {
     let data = {
       userid: req.body.userid,
       name: req.body.name,
-      password: req.body.password,
+      password: hashPassword,
+      salt: salt,
     };
     const createModel = await model.create(data);
 

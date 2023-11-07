@@ -2,7 +2,6 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const session = require("express-session");
-const crypto = require("crypto");
 const PORT = 8000;
 
 app.set("view engine", "ejs");
@@ -16,8 +15,6 @@ app.use(
     saveUninitialized: true,
   })
 );
-
-app.use(crypto({}));
 
 const router = require("./routes");
 app.use("/", router);
