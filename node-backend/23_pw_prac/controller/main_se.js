@@ -10,20 +10,19 @@ exports.signup = (req, res) => {
 };
 
 exports.post_signup = async (req, res) => {
-  let body = req.body;
-  let inputPassword = body.password;
-  let salt = Math.round(new Date().valueOf() * Math.random()) + "";
-  let hashPassword = crypto
-    .createHash("sha512")
-    .update(inputPassword + salt)
-    .digest("hex");
-
   try {
+    let body = req.body;
+    let inputPassword = body.password;
+    let salt = Math.round(new Date().valueOf() * Math.random()) + "";
+    let hashPassword = crypto
+      .createHash("sha512")
+      .update(inputPassword + salt)
+      .digest("hex");
     let data = {
       userid: req.body.userid,
       name: req.body.name,
-      password: hashPassword,
-      salt: salt,
+      password: req.body.password,
+      saltpw: hashPassword,
     };
     const createModel = await model.create(data);
 

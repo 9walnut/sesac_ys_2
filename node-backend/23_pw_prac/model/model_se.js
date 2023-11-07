@@ -23,7 +23,6 @@ function model(Sequelize, DataTypes) {
       },
       saltpw: {
         type: DataTypes.STRING(255),
-        allowNull: false,
       },
     }, // column 정의
     {
