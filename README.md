@@ -4,4 +4,5 @@
 작성자 : 9walnut
 날짜 20230916
 
-- git branch test
+- git branch test(ex. 로그인 UI)
+- git branch test(ex. 로그인 API)
