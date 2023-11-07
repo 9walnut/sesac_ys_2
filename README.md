@@ -7,4 +7,4 @@
 - git branch test(ex. 로그인 UI)
 - git branch test(ex. 로그인 API)
 
-- git branch test2 (수정)
+- git branch test4
