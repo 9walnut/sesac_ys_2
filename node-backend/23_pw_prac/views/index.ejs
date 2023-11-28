@@ -10,6 +10,7 @@
     <script src="/vendors/bootstrap/js/bootstrap.min.js"></script>
     <script src="/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/vendors/jquery/jquery.min.js "></script>
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
     <title>Document</title>
   </head>
   <body>
@@ -76,9 +77,68 @@
           </div>
         </div>
       </div>
+      <a id="btnTwitter" class="link-icon twitter" href="javascript:shareTwitter();" />트위터
+      <a id="btnFacebook" class="link-icon facebook" href="javascript:shareFacebook();" />페이스북
+      <a id="btnKakao" class="link-icon kakao" href="javascript:shareKakao();" />카카오톡
+      <div>
+        <button type="button" class="copy-btn" onclick="copyUrl()">링크 복사</button>
+      </div>
     </section>
   </body>
   <script>
+    let nowUrl = window.location.href;
+
+    function copyUrl() {
+      //nowUrl 변수에 담긴 주소를
+      navigator.clipboard.writeText(nowUrl).then(res => {
+        alert("주소가 복사되었습니다!");
+      })
+    }
+
+    function clip() {
+      var url = '';
+      var textarea = document.createElement("textarea");
+      document.body.appendChild(textarea);
+      // 여기 수정하면 될거 같습니다?
+      url = 'window.location.href';
+      textarea.value = url;
+      textarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textarea);
+      alert("링크가 복사되었습니다!")
+    };
+
+    function shareTwitter() {
+      var sendText = "개발새발"; // 전달할 텍스트
+      var sendUrl = "https://9walnut.tistory.com/"; // 전달할 URL
+      window.open("https://twitter.com/intent/tweet?text=" + sendText + "&url=" + sendUrl);
+    }
+
+    function shareFacebook() {
+      var sendUrl = "https://9walnut.tistory.com/"; // 전달할 URL
+      window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
+    }
+
+    function shareKakao() {
+      // 사용할 앱의 JavaScript 키 설정
+      Kakao.init('ca85f3701e06028b7519f363fadaaf14');
+
+      // 카카오링크 버튼 생성
+      Kakao.Link.createDefaultButton({
+        container: '#btnKakao', // 카카오공유버튼ID
+        objectType: 'feed',
+        content: {
+          title: "호두", // 보여질 제목
+          description: "호두네", // 보여질 설명
+          imageUrl: "https://9walnut.tistory.com/", // 콘텐츠 URL
+          link: {
+            mobileWebUrl: "https://9walnut.tistory.com/",
+            webUrl: "https://9walnut.tistory.com/"
+          }
+        }
+      });
+    }
+
     function login() {
       var form = document.forms["prac"];
       if (!form.checkValidity()) {

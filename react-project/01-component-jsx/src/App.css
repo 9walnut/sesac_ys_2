@@ -1,0 +1,15 @@
+/* .FuncComponent_test-css--active{} */
+
+.test-css {
+  background-color: yellow;
+  font-size: 30px;
+}
+
+.Section__section {
+  margin-bottom: 20px;
+  border: 2px solid blue;
+}
+
+.Section__title {
+  color: red;
+}
