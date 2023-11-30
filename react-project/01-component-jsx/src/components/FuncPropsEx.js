@@ -55,4 +55,5 @@ FuncPropsEx.propTypes = {
   number: proptype.number,
 };
 
+
 export default FuncPropsEx;

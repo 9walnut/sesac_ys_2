@@ -1,6 +1,8 @@
 import propTypes from "prop-types";
 
 function Section({ title, children }) {
+
+  
   return (
     <>
       <div className="Section__section">
