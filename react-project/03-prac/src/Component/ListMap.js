@@ -29,7 +29,7 @@ function ListMap() {
     // filter 메서드의 return 값은 조건이 되어야함
     // 조건이 true일 경우 해당 원소는 새로운 배열에 포함
     // false일 경우 새로운 배열에 포함하지 않음ㄴ
-    const newList = list.filter((value) => value.id != id);
+    const newList = list.filter((value) => value.id !== id);
     // rendering할 떄 list 배열을 이용함. > list배열에서 원하는 원소 삭제
     // 삭제된 버전의 배열을 list에 다시 setList를 이용하여 list의 상태를 변경
     setList(newList);
@@ -55,11 +55,6 @@ function ListMap() {
           );
         })}
       </ul>
-
-      <div>
-        작성자 : <input></input>
-        제목 : <input></input>
-      </div>
     </>
   );
 }

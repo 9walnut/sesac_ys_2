@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 function Prac3() {
+  const writeRef = useRef();
   const userInfo = [];
-
   const [list, setList] = useState(userInfo);
   const [newNumber, setNumber] = useState(1);
   const [newTitle, setNewTitle] = useState("");
@@ -17,11 +17,15 @@ function Prac3() {
       title: newTitle,
       writer: newWriter,
     };
-    const newList = list.concat(newObj);
-    setNumber(newNumber + 1);
-    setList(newList);
-    setNewTitle("");
-    setNewWriter("");
+    if (newTitle !== "" && newWriter !== "") {
+      const newList = list.concat(newObj);
+      setNumber(newNumber + 1);
+      setList(newList);
+      setNewTitle("");
+      setNewWriter("");
+    } else {
+      writeRef.current.focus();
+    }
   };
 
   const handleSearch = (e) => {
@@ -54,6 +58,7 @@ function Prac3() {
           작성자 :{" "}
           <input
             type="text"
+            ref={writeRef}
             value={newWriter}
             onChange={(e) => {
               setNewWriter(e.target.value);
@@ -62,6 +67,7 @@ function Prac3() {
           제목 :{" "}
           <input
             type="text"
+            ref={writeRef}
             value={newTitle}
             onChange={(e) => {
               setNewTitle(e.target.value);
