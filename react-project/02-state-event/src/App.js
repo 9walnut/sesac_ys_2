@@ -1,6 +1,7 @@
 import "./App.css";
 import EventClass from "./components/EventClass";
 import EventFunc from "./components/EventFunc";
+import Practice4 from "./components/Practice4";
 import StateClass from "./components/StateClass";
 import StateClassPrac from "./components/StateClassPrac";
 import StateFunc from "./components/StateFunc";
@@ -23,6 +24,8 @@ function App() {
       <EventFunc></EventFunc>
       <br></br>
       <FuncPropsEx></FuncPropsEx>
+      <br></br>
+      <Practice4></Practice4>
     </>
   );
 }
