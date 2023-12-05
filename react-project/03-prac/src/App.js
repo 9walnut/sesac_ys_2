@@ -3,8 +3,8 @@ import ClassRef from "./Component/ClassRef";
 import FuncRef from "./Component/FuncRef";
 import ListMap from "./Component/ListMap";
 import Prac3 from "./Component/Prac3";
-import RefPrac from "./Component/RefPrac";
 import ScrollBox from "./Component/ScrollBox";
+import RefPrac from "./Component/RefPrac";
 
 function App() {
   return (

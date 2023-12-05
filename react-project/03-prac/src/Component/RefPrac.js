@@ -1,3 +1,7 @@
-function RefPrac() {}
+import {useRef} from "react"
 
-export default RefPrac;
+function RefPrac(){
+
+}
+
+export default RefPrac
