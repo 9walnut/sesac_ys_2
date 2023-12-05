@@ -1,0 +1,76 @@
+// :root{
+//   --color-main : red
+// }
+
+// div{
+//   color: var(--color-main)
+// }
+
+$color-main: red;
+
+.scss-parents {
+  // 변수 활용
+  color: $color-main;
+  // 연산
+  // width: 100vw - 50vw;
+  // background-color: blue;
+}
+
+// style코드 블록을 함수처럼 하나로 묶어두고
+@mixin box-width($size) {
+  width: $size;
+  height: $size;
+}
+
+// 사용할 땐 @include 키워드를 이용하여 사용
+// box-width를 그대로 가져오는 효과
+.box1 {
+  @include box-width(100px);
+  background-color: orange;
+}
+
+.box2 {
+  @include box-width(200px);
+  background-color: green;
+}
+
+// 중첩
+// 원래는 .scss-parents > ul{} 이런식이었음
+.scss-parents {
+  ul {
+    background-color: black;
+    color: white;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+// .btn.btn-primary 랑 같은 효과
+// 두 css가 같이 적용됨
+.btn-primary {
+  @extend .btn;
+  background-color: blue;
+}
+
+.origin-sass {
+  display: flex;
+  .box {
+    @include box-width(100px);
+    &.red {
+      background-color: red;
+    }
+    &.yellow {
+      background-color: yellow;
+    }
+    &.orange {
+      background-color: orange;
+    }
+  }
+}
