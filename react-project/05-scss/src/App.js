@@ -1,16 +1,17 @@
 import "./App.css";
-import CssModule from "./components/CssModule";
-import OriginCss from "./components/OriginCss";
-import SassComponent from "./components/SassComponent";
+import Prac from "./components/Prac";
 
 function App() {
   return (
     <>
-      <OriginCss></OriginCss>
+      {/* <OriginCss></OriginCss> */}
       <br></br>
-      <CssModule></CssModule>
+      {/* <CssModule></CssModule> */}
       <br></br>
-      <SassComponent></SassComponent>
+      {/* <SassComponent></SassComponent> */}
+      <br></br>
+      {/* <StyledComponent></StyledComponent> */}
+      <Prac></Prac>
     </>
   );
 }
