@@ -8,6 +8,9 @@ export default function CustomHookEx() {
       <h3>Custom Hook 공부</h3>
       {isPopup && <div>보여라!</div>}
       <button onClick={togglePopup}>토글</button>
+
+      <input></input>
+      <input></input>
     </>
   );
 }
