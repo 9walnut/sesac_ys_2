@@ -2,7 +2,9 @@
   "emmet.includeLanguages": {
     "ejs": "html"
   },
-  "editor.codeActionsOnSave": { "source.organizeImports": true },
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
   "[html]": {
     "editor.defaultFormatter": "j69.ejs-beautify"
   },
