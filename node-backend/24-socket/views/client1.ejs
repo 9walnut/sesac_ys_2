@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소켓</title>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <h3>소켓 연습</h3>
+    <button onclick="hello()">hello</button>
+
+    <button onclick="entry()">study</button>
+    <button onclick="bye()">bye</button>
+    <script>
+      // 포트번호가 다르다면 넣어야함
+      const socket = io()
+      // 소켓을 이용해 데이터 전송하는 함수 : emit
+      // 소켓을 이용해 데이터 수신하는 이벤트 : on
+
+      function hello() {
+        // (전송할 이벤트 이름, [전송할 데이터])
+        // 전송할 데이터의 형태는 자유롭게(문자열, 숫자, 객체)
+        socket.emit("hello", {
+          msg: "안녕하세요"
+        })
+      }
+
+      // 특정 함수 안에 넣지 않도록 주의
+      socket.on("bye", (res) => {
+        let h3 = document.querySelector('h3')
+        h3.innerHTML = res.msg
+      })
+
+      function entry() {
+        socket.emit("entry")
+      }
+      socket.on("notice", (res) => {
+        let h3 = document.querySelector('h3')
+        h3.innerHTML = res.msg
+      })
+
+      function bye() {
+        socket.emit("bye")
+      }
+      socket.on("pracbye", (res) => {
+        let h3 = document.querySelector('h3')
+        h3.innerHTML = res.msg
+      })
+    </script>
+  </body>
+</html>
